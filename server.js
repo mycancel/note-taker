@@ -5,6 +5,8 @@ const PORT = 3001;
 
 const app = express();
 
+app.use(express.static('public'));
+
 // When the path is the base path (on startup or by clicking the header title),
 app.get('/', (req, res) =>
     // The index.html page is returned as a response
