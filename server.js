@@ -5,10 +5,16 @@ const PORT = 3001;
 
 const app = express();
 
-// When the path is the base path,
+// When the path is the base path (on startup or by clicking the header title),
 app.get('/', (req, res) =>
-    // the user is redirected to the index.html page
+    // The index.html page is returned as a response
     res.sendFile(path.join(__dirname, 'public/index.html'))
+);
+
+// When the path is /notes (using the 'Get Started' btn)
+app.get('/notes', (req, res) =>
+    // The notes.html page is returned as a response
+    res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
 app.listen(PORT, () =>
