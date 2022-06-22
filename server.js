@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+const e = require('express');
 
 const PORT = 3001;
 
@@ -18,6 +20,14 @@ app.get('/notes', (req, res) =>
     // The notes.html page is returned as a response
     res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
+
+// getNotes()
+app.get('/notes/api', (req, res) => {
+    const dbData = fs.readFileSync('./db/db.json', 'utf8');
+    const notes = dbData.length ? JSON.parse(dbData) : [];
+
+    return res.json(notes);
+});
 
 app.listen(PORT, () =>
     console.log(`App listening at http://localhost:${PORT}`)
