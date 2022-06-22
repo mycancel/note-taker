@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { uuid } = require('./utils/util.js');
 
 const PORT = 3001;
 
@@ -35,7 +36,10 @@ app.post('/notes/api', (req, res) => {
     console.log(`${req.method} to save note`);
 
     if (req.body) {
-        const newNote = {...req.body};
+        const newNote = {
+            ...req.body,
+            id: uuid()
+        };
         const dbData = fs.readFileSync('./db/db.json', 'utf8');
         const notes = dbData.length ? JSON.parse(dbData) : [];
     
