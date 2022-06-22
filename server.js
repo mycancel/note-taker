@@ -24,7 +24,7 @@ app.get('/notes', (req, res) =>
 );
 
 // getNotes()
-app.get('/notes/api', (req, res) => {
+app.get('/api/notes', (req, res) => {
     const dbData = fs.readFileSync('./db/db.json', 'utf8');
     const notes = dbData.length ? JSON.parse(dbData) : [];
 
@@ -32,7 +32,7 @@ app.get('/notes/api', (req, res) => {
 });
 
 // saveNotes()
-app.post('/notes/api', (req, res) => {
+app.post('/api/notes', (req, res) => {
     console.log(`${req.method} to save note`);
 
     if (req.body) {
