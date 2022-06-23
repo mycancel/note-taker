@@ -1,32 +1,12 @@
 [
   {
-    "title": "Three Little Bears",
-    "text": "Walk up the hill",
-    "id": "cffc"
+    "title": "How to Use",
+    "text": "This is how you use this application.",
+    "id": "5023"
   },
   {
-    "title": "Grocery List",
-    "text": "Eggs,\nMilk,\nCheese",
-    "id": "df96"
-  },
-  {
-    "title": "Idea for song",
-    "text": "love song?? Maybe",
-    "id": "ce37"
-  },
-  {
-    "title": "Creating a Test",
-    "text": "Here it is",
-    "id": "8e51"
-  },
-  {
-    "title": "Creating a new note",
-    "text": "Here it is again",
-    "id": "70f9"
-  },
-  {
-    "title": "Testing this out again",
-    "text": "Hello again",
-    "id": "5980"
+    "title": "Testing",
+    "text": "Testing again",
+    "id": "5eba"
   }
 ]
