@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-const fs = require('fs');
-const { uuid } = require('../utils');
+const { readFile, uuid, writeFile } = require('../utils');
 
 // When the path is the base path (on startup or by clicking the header title),
 router.get('/', (req, res) =>
@@ -15,42 +14,25 @@ router.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/notes.html'))
 );
 
-// getNotes()
+// Reads db.json file and returns previous notes (getNotes function)
 router.get('/api/notes', (req, res) => {
-    const dbData = fs.readFileSync('./db/db.json', 'utf8');
-    const notes = dbData.length ? JSON.parse(dbData) : [];
-
+    const notes = readFile('./db/db.json');
     return res.json(notes);
 });
 
-// saveNotes()
+// Adds new note to db.json file (saveNotes function)
 router.post('/api/notes', (req, res) => {
-    console.log(`${req.method} to save note`);
-
     if (req.body) {
         const newNote = {
             ...req.body,
             id: uuid()
         };
-        const dbData = fs.readFileSync('./db/db.json', 'utf8');
-        const notes = dbData.length ? JSON.parse(dbData) : [];
-
+        const notes = readFile('./db/db.json');
         notes.push(newNote);
-
         const noteString = JSON.stringify(notes, null, 2);
+        writeFile('./db/db.json', noteString);
 
-        fs.writeFile('./db/db.json', noteString, (err) =>
-            err
-                ? console.error(err)
-                : console.log(`Note has been written to JSON file`)
-        );
-
-        const response = {
-            status: 'success',
-            body: newNote,
-        };
-
-        res.status(201).json(response);
+        res.status(201).send('Success');
     } else {
         res.status(500).json('Error in saving note');
     }
