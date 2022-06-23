@@ -22,9 +22,9 @@ Users who want to save notes, from business owners to students, can use this app
 
 ## Visuals
 
-![No Notes Notes Page]()
+![No Notes Notes Page](./images/no-notes.png)
 
-![Notes Filled In]()
+![Notes Filled In](./images/notes-written.png)
 
 ## Future Development
 
